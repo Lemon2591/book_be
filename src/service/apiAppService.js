@@ -57,7 +57,7 @@ const getImageService = async (page, limit) => {
 const loadData = async () => {
   let count = 0;
   const response = await axios.get(
-    "https://daotruyen.me/api/public/stories?pageNo=5&pageSize=300",
+    "https://daotruyen.me/api/public/stories?pageNo=17&pageSize=8",
     {
       headers: {
         "User-Agent":
@@ -188,7 +188,7 @@ const getTrendingService = async () => {
     limit: 8,
     raw: true,
     attributes: ["id", "title", "slug", "cover_url", "createdAt"],
-    where: { status: 1 },
+    where: { status: 5 },
   });
 
   const topStories = await Stories.findAll({
@@ -246,6 +246,7 @@ const getTopService = async (page, limit) => {
     where: { status: 1 }, // chỉ lấy truyện đang hoạt động (nếu có)
     ...paging,
     nest: true,
+    order: [["createdAt", "DESC"]],
   });
 
   const total = await Stories?.count({
