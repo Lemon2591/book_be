@@ -16,9 +16,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "http://localhost:2509",
       "http://localhost:5525",
-      "http://localhost:5173",
+      "https://truyen247.site",
     ],
     credentials: true,
   })
