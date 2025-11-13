@@ -273,6 +273,7 @@ const getDetailsService = async (slug) => {
       },
     ],
   });
+  await Stories.increment("views", { where: { slug } });
   return details;
 };
 
