@@ -458,6 +458,7 @@ const getSiteMapService = async (slug, page, limit) => {
   const slugStories = await Stories.findAll({
     where: { status: 1 },
     attributes: ["slug"],
+    order: [["createdAt", "DESC"]],
   });
 
   const siteMapStories = slugStories?.map((val) => {
@@ -473,8 +474,8 @@ const getSiteMapService = async (slug, page, limit) => {
   });
 
   const dataSiteMap = [
-    ...siteMapCategories,
     ...siteMapStories,
+    ...siteMapCategories,
     ...siteMapChapter,
   ];
   return dataSiteMap;
