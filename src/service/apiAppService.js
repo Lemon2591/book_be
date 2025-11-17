@@ -257,7 +257,7 @@ const getTopService = async (page, limit) => {
 
 const getDetailsService = async (slug) => {
   const details = await Stories.findOne({
-    where: { status: 1, slug: slug },
+    where: { status: { [Op.in]: [1, 5] }, slug: slug },
     include: [
       {
         model: Chapters,
