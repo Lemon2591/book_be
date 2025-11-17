@@ -356,7 +356,7 @@ const getSearchService = async (keyword) => {
 
 const getChapterService = async (slug, chapterId) => {
   const details = await Stories.findOne({
-    where: { status: 1, slug: slug },
+    where: { status: { [Op.in]: [1, 5] }, slug: slug },
     include: [
       {
         model: Chapters,
